@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[appleIndex].classList.remove('apple');
     clearInterval(interval);
     score = 0;
-    // randonApple()
+    randomApple();
     direction = 1;
     scoreDisplay.innerText = score;
     intervalTime = 1000;
@@ -63,9 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
       interval = setInterval(moveOutcomes, intervalTime);
     };
     squares[currentSnake[0]].classList.add('snake');
-
   };
-  // function that deals with snake eating apple
+
+  // function to generate apple
+  function randomApple() {
+    do {
+      appleIndex = Math.floor(Math.random() * squares.length)
+    } while (squares[appleIndex].classList.contains('snake'));
+    squares[appleIndex].classList.add('apple');
+  };
 
   // function to keycodes
   function control(e) {
@@ -76,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (e.keyCode === 38) {
       direction = -width; // up arrow = move up
     } else if (e.keyCode === 37) {
-      direction - 1; // left arrow = move left
+      direction = -1; // left arrow = move left
     } else if (e.keyCode === 40) {
       direction = +width; // down arrow = move down
     }
