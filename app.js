@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // start/reset game
   function startGame() {
-    currentSnake.forEach(index => squares[index].remove('snake'));
+    currentSnake.forEach(index => squares[index].classList.remove('snake'));
     squares[appleIndex].classList.remove('apple');
     clearInterval(interval);
     score = 0;
